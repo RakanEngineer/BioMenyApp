@@ -77,8 +77,26 @@ namespace BioMenyApp
                             Console.WriteLine("Ogiltigt antal, försök igen.");
                         }
                         break;
+                    case "3":
+                        Console.WriteLine("Upprepar text tio gånger:");
+                        Console.Write("Ange en valfri text: ");
+                        string userText = Console.ReadLine();
+
+                        Console.WriteLine();
+                        Console.Write("Resultat:");
+
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            if (i < 10)
+                                Console.Write($"{i}.{userText}, ");    
+                            else
+                                Console.WriteLine($"{i}.{userText}.");
+
+                        }
+                        Console.WriteLine("\n");
+                        break;
                     default:
-                        Console.WriteLine("Ogiltigt val, försök igen.");
+                        Console.WriteLine("Ogiltigt val, försök igen!");
                         break;
                 }
             }
@@ -91,6 +109,7 @@ namespace BioMenyApp
             Console.WriteLine("0. Avsluta programmet");
             Console.WriteLine("1. Ungdom eller pensionär");
             Console.WriteLine("2. Sällskapspris");
+            Console.WriteLine("3. Upprepa text tio gånger");
             Console.WriteLine("----------------------");
             Console.Write("Välj ett alternativ: ");
         }

@@ -16,7 +16,28 @@ namespace BioMenyApp
                         Console.WriteLine("Avslutar programmet...");
                         return;
                     case "1":
-                        Console.WriteLine("Du valde Ungdom eller pensionär.");
+                        Console.WriteLine("Ange ålder: ");
+                        string ageInput= Console.ReadLine();
+
+                        if (int.TryParse(ageInput, out int age))
+                        {
+                            if (age < 20)
+                            {
+                                Console.WriteLine("Ungdomspris: 80kr");
+                            }
+                            else if (age > 64)
+                            {
+                                Console.WriteLine("Pensionärspris: 90kr");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Standardpris: 120kr");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ogiltig ålder, försök igen.");
+                        }
                         break;
                     case "2":
                         Console.WriteLine("Du valde Sällskapspris.");

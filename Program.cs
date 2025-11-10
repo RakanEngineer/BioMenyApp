@@ -17,7 +17,7 @@ namespace BioMenyApp
                         return;
                     case "1":
                         Console.WriteLine("Ange ålder: ");
-                        string ageInput= Console.ReadLine();
+                        string ageInput = Console.ReadLine();
 
                         if (int.TryParse(ageInput, out int age))
                         {
@@ -44,7 +44,7 @@ namespace BioMenyApp
                         string groupSizeInput = Console.ReadLine();
                         if (int.TryParse(groupSizeInput, out int groupSize))
                         {
-                           int totalPrice = 0;
+                            int totalPrice = 0;
                             for (int i = 0; i < groupSize; i++)
                             {
                                 Console.WriteLine($"Ange ålder för person {i + 1}: ");
@@ -88,12 +88,26 @@ namespace BioMenyApp
                         for (int i = 1; i <= 10; i++)
                         {
                             if (i < 10)
-                                Console.Write($"{i}.{userText}, ");    
+                                Console.Write($"{i}.{userText}, ");
                             else
                                 Console.WriteLine($"{i}.{userText}.");
 
                         }
                         Console.WriteLine("\n");
+                        break;
+                    case "4":
+                        Console.WriteLine("Hämtar tredje ordet:");
+                        Console.Write("Ange en mening med minst tre ord: ");
+                        string mening = Console.ReadLine();
+                        string[] words = mening.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        if (words.Length >= 3)
+                        {
+                            Console.WriteLine($"Det tredje ordet är: {words[2]}\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Du skrev inte tillräckligt många ord!.\n");
+                        }
                         break;
                     default:
                         Console.WriteLine("Ogiltigt val, försök igen!");
@@ -110,6 +124,7 @@ namespace BioMenyApp
             Console.WriteLine("1. Ungdom eller pensionär");
             Console.WriteLine("2. Sällskapspris");
             Console.WriteLine("3. Upprepa text tio gånger");
+            Console.WriteLine("4. Hämta tredje ordet");
             Console.WriteLine("----------------------");
             Console.Write("Välj ett alternativ: ");
         }

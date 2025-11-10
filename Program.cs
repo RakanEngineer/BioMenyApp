@@ -38,6 +38,7 @@ namespace BioMenyApp
 
         private static void ShowThirdWord()
         {
+            Console.Clear();
             Console.WriteLine("Hämtar tredje ordet:");
             Console.Write("Ange en mening med minst tre ord: ");
             string mening = Console.ReadLine();
@@ -54,6 +55,7 @@ namespace BioMenyApp
 
         private static void RepeatTextTenTimes()
         {
+            Console.Clear();
             Console.WriteLine("Upprepar text tio gånger:");
             Console.Write("Ange en valfri text: ");
             string userText = Console.ReadLine();
@@ -74,6 +76,7 @@ namespace BioMenyApp
 
         private static void GroupSizeAndTotalPrice()
         {
+            Console.Clear();
             Console.WriteLine("Hur många vi är som ska gå på bio:");
             string groupSizeInput = Console.ReadLine();
             if (int.TryParse(groupSizeInput, out int groupSize))
@@ -85,7 +88,9 @@ namespace BioMenyApp
                     string personAgeInput = Console.ReadLine();
                     if (int.TryParse(personAgeInput, out int personAge))
                     {
-                        if (personAge < 20)
+                        if (personAge < 5 || personAge > 100)
+                            totalPrice = 0;
+                        else if (personAge < 20)
                         {
                             totalPrice += 80;
                         }
@@ -114,22 +119,32 @@ namespace BioMenyApp
 
         private static void CheckTicketPrice()
         {
-            Console.WriteLine("Ange ålder: ");
+            Console.Clear();
+            Console.Write("Ange ålder: ");
             string ageInput = Console.ReadLine();
 
             if (int.TryParse(ageInput, out int age))
             {
-                if (age < 20)
+                int price = 0;
+                if (age < 5 || age > 100)
                 {
-                    Console.WriteLine("Ungdomspris: 80kr");
+                    Console.WriteLine("Gratis inträde!");
+                    return;
+                }
+                else if (age < 20)
+                {
+                    price = 80;
+                    Console.WriteLine($"Ungdomspris: {price} kr");
                 }
                 else if (age > 64)
                 {
-                    Console.WriteLine("Pensionärspris: 90kr");
+                    price = 90;
+                    Console.WriteLine($"Pensionärspris: {price} kr");
                 }
                 else
                 {
-                    Console.WriteLine("Standardpris: 120kr");
+                    price = 120;
+                    Console.WriteLine($"Standardpris: {price} kr");
                 }
             }
             else

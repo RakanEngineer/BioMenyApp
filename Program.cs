@@ -41,8 +41,8 @@ namespace BioMenyApp
             Console.Clear();
             Console.WriteLine("Hämtar tredje ordet:");
             Console.Write("Ange en mening med minst tre ord: ");
-            string mening = Console.ReadLine();
-            string[] words = mening.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string sentence  = Console.ReadLine();
+            string[] words = sentence .Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (words.Length >= 3)
             {
                 Console.WriteLine($"Det tredje ordet är: {words[2]}\n");
@@ -88,20 +88,21 @@ namespace BioMenyApp
                     string personAgeInput = Console.ReadLine();
                     if (int.TryParse(personAgeInput, out int personAge))
                     {
-                        if (personAge < 5 || personAge > 100)
-                            totalPrice = 0;
-                        else if (personAge < 20)
-                        {
-                            totalPrice += 80;
-                        }
-                        else if (personAge > 64)
-                        {
-                            totalPrice += 90;
-                        }
-                        else
-                        {
-                            totalPrice += 120;
-                        }
+                        totalPrice += CalculateTicketPrice(personAge);
+                        //if (personAge < 5 || personAge > 100)
+                        //    totalPrice = 0;
+                        //else if (personAge < 20)
+                        //{
+                        //    totalPrice += 80;
+                        //}
+                        //else if (personAge > 64)
+                        //{
+                        //    totalPrice += 90;
+                        //}
+                        //else
+                        //{
+                        //    totalPrice += 120;
+                        //}
                     }
                     else
                     {
@@ -117,6 +118,18 @@ namespace BioMenyApp
             }
         }
 
+        private static int CalculateTicketPrice(int age)
+        {
+            if (age < 5 || age > 100)
+                return 0;
+            else if (age < 20)
+                return 80;
+            else if (age > 64)
+                return 90;
+            else
+                return 120;
+        }
+
         private static void CheckTicketPrice()
         {
             Console.Clear();
@@ -125,27 +138,32 @@ namespace BioMenyApp
 
             if (int.TryParse(ageInput, out int age))
             {
-                int price = 0;
-                if (age < 5 || age > 100)
-                {
+                int price = CalculateTicketPrice(age);
+
+                if (price == 0) 
                     Console.WriteLine("Gratis inträde!");
-                    return;
-                }
-                else if (age < 20)
-                {
-                    price = 80;
-                    Console.WriteLine($"Ungdomspris: {price} kr");
-                }
-                else if (age > 64)
-                {
-                    price = 90;
-                    Console.WriteLine($"Pensionärspris: {price} kr");
-                }
-                else
-                {
-                    price = 120;
-                    Console.WriteLine($"Standardpris: {price} kr");
-                }
+                else 
+                    Console.WriteLine($"Biljettpris: {price} kr");
+                //if (age < 5 || age > 100)
+                //{
+                //    Console.WriteLine("Gratis inträde!");
+                //    return;
+                //}
+                //else if (age < 20)
+                //{
+                //    price = 80;
+                //    Console.WriteLine($"Ungdomspris: {price} kr");
+                //}
+                //else if (age > 64)
+                //{
+                //    price = 90;
+                //    Console.WriteLine($"Pensionärspris: {price} kr");
+                //}
+                //else
+                //{
+                //    price = 120;
+                //    Console.WriteLine($"Standardpris: {price} kr");
+                //}
             }
             else
             {
